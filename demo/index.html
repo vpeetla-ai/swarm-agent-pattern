@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Swarm Agent Pattern — Live Demo</title>
+<link rel="stylesheet" href="styles.css"/></head><body><main class="shell">
+<p class="tag">Production Agent Patterns · 5/5</p><h1>Swarm Agent Pattern</h1>
+<p class="lede">Parallel autonomous workers merge results with conflict resolution.</p>
+<section class="panel"><button id="run" type="button">Run parallel research swarm</button>
+<div id="answer" class="answer"></div><div id="trace" class="trace"></div></section></main>
+<script>
+const DEMO={answer:"Merged swarm brief: 3 live sources, 2 rate-limited, consensus on risk-off tone.",events:[
+{name:"swarm.spawn",payload:{workers:4,mission:"market_scan"}},
+{name:"worker.complete",payload:{id:"quotes",status:"live"}},
+{name:"worker.complete",payload:{id:"headlines",status:"live"}},
+{name:"worker.complete",payload:{id:"macro",status:"rate_limited"}},
+{name:"merger.consensus",payload:{agreement:0.86,conflicts:1}}]};
+const trace=document.getElementById("trace");
+document.getElementById("run").onclick=async()=>{trace.innerHTML="";document.getElementById("answer").textContent="";
+for(const e of DEMO.events){const el=document.createElement("div");el.className="event live";
+el.innerHTML=`<strong>${e.name}</strong><pre>${JSON.stringify(e.payload,null,2)}</pre>`;trace.appendChild(el);
+await new Promise(r=>setTimeout(r,600));el.classList.remove("live");el.classList.add("done");}
+document.getElementById("answer").textContent=DEMO.answer;};
+</script></body></html>
