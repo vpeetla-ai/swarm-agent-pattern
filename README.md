@@ -1,7 +1,22 @@
 # Swarm Agent Pattern
 
+**Part 5 of 5 — parallel specialist exploration.** Used in **VAP parallel asyncio bundles**.
 
-## Agent skills (Cursor + Codex)
+[▶ Live demo](https://swarm-agent-pattern.vercel.app) · [Architecture](docs/ARCHITECTURE.md) · [Portfolio](https://venkat-ai.com/work) · [VAP case study](https://github.com/vpeetla-ai/ai-architecture-portfolio/blob/main/case-studies/venkat-ai-platform.md)
+
+## What this is
+
+Parallel autonomous agents with handoff-friendly boundaries — explore breadth before merge.
+
+## How we solve it
+
+Async specialist fan-out with orchestrator merge and live trace visualization.
+
+## Case study & tradeoffs
+
+[venkat-ai.com/work](https://venkat-ai.com/work) · [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+
+---
 
 Org skills: [vpeetla-ai-skills](https://github.com/vpeetla-ai/vpeetla-ai-skills). This repo includes `.cursor/skills/`, `AGENTS.md`, and `CONTEXT.md`.
 
