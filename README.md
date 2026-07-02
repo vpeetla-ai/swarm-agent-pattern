@@ -1,5 +1,9 @@
 # Swarm Agent Pattern
 
+
+<!-- vpeetla-tech-stack:start -->
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square)]() [![LangGraph](https://img.shields.io/badge/LangGraph-9333EA?style=flat-square)]() [![asyncio](https://img.shields.io/badge/asyncio-3776AB?style=flat-square)]() [![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square)]()
+<!-- vpeetla-tech-stack:end -->
 **Part 5 of 5 — parallel specialist exploration.** Used in **VAP parallel asyncio bundles**.
 
 [▶ Live demo](https://swarm-agent-pattern.vercel.app) · [Architecture](docs/ARCHITECTURE.md) · [Portfolio](https://venkat-ai.com/work) · [VAP case study](https://github.com/vpeetla-ai/ai-architecture-portfolio/blob/main/case-studies/venkat-ai-platform.md)
