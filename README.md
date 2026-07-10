@@ -2,9 +2,9 @@
 
 
 <!-- vpeetla-tech-stack:start -->
-[![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square)]() [![LangGraph](https://img.shields.io/badge/LangGraph-9333EA?style=flat-square)]() [![asyncio](https://img.shields.io/badge/asyncio-3776AB?style=flat-square)]() [![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square)]()
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square)]() [![Curriculum stub](https://img.shields.io/badge/Curriculum-stub-0EA5E9?style=flat-square)]() [![asyncio](https://img.shields.io/badge/asyncio-3776AB?style=flat-square)]() [![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square)]()
 <!-- vpeetla-tech-stack:end -->
-**Part 5 of 5 — parallel specialist exploration.** Used in **VAP parallel asyncio bundles**.
+**Curriculum teaching stub for Swarm parallelism** — parallel specialist exploration. Pattern used in **VAP parallel asyncio bundles**.
 
 [▶ Live demo](https://swarm-agent-pattern.vercel.app) · [Architecture](docs/ARCHITECTURE.md) · [Portfolio](https://venkat-ai.com/work) · [VAP case study](https://github.com/vpeetla-ai/ai-architecture-portfolio/blob/main/case-studies/venkat-ai-platform.md)
 
@@ -62,7 +62,7 @@ Curriculum teaching stub (compose into VAP for production graphs) of the **Swarm
 | 4 | Multi-Agent | [multi-agent-system-pattern](https://github.com/vpeetla-ai/multi-agent-system-pattern) | Specialized role delegation |
 | 5 | **Swarm** | **this repo** | Parallel autonomous agents |
 
-[▶ Live demo](https://swarm-agent-pattern.vercel.app) · [📖 Full series roadmap](https://github.com/vpeetla-ai/ai-content-factory/blob/main/docs/agent-patterns/ROADMAP.md) · [🚀 See in production — AI Content Factory](https://ai-content-factory-iota.vercel.app)
+[▶ Live demo](https://swarm-agent-pattern.vercel.app) · [📖 Full series roadmap](https://github.com/vpeetla-ai/ai-content-factory/blob/main/docs/agent-patterns/ROADMAP.md) · [Compose in production — AI Content Factory (separate repo)](https://ai-content-factory-iota.vercel.app)
 
 ---
 
@@ -93,7 +93,7 @@ See [docs/LOCAL_DEVELOPMENT.md](docs/LOCAL_DEVELOPMENT.md) and [docs/ARCHITECTUR
 
 ## Series complete?
 
-You now have all five core patterns. Compose them in **[AI Content Factory](https://github.com/vpeetla-ai/ai-content-factory)** — research RAG, parallel enrich, HITL gate, multi-platform publish.
+You now have all five curriculum stubs. Compose them in the **separate** **[AI Content Factory](https://github.com/vpeetla-ai/ai-content-factory)** repo — research RAG, parallel enrich, HITL gate, multi-platform publish.
 
 [▶ Live demo](https://ai-content-factory-iota.vercel.app)
 
