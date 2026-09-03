@@ -1,0 +1,312 @@
+{
+  "scenarios": [
+    {
+      "name": "baseline_default_roster",
+      "description": "Default 3-agent roster (Exploration, Risk, Synthesis), default threshold/target.",
+      "goal": "Optimize incident response",
+      "threshold": 0.8,
+      "convergence_target": 3,
+      "max_rounds": 4,
+      "roster_size": 3,
+      "expect_convergence": true,
+      "fanout": {
+        "label": "fanout",
+        "converged": true,
+        "rounds": 1,
+        "invocations": 3,
+        "wall_clock_seconds": 3.751400072360411e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": true,
+        "rounds": 3,
+        "invocations": 3,
+        "wall_clock_seconds": 2.2637999791186303e-05
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": true,
+        "rounds": 3,
+        "invocations": 3,
+        "wall_clock_seconds": 1.5614998119417578e-05
+      }
+    },
+    {
+      "name": "reordered_synthesis_first",
+      "description": "Same 3 agents, Synthesis proposes first (its low-readiness score starts below threshold).",
+      "goal": "Ship a canary release safely",
+      "threshold": 0.8,
+      "convergence_target": 3,
+      "max_rounds": 4,
+      "roster_size": 3,
+      "expect_convergence": true,
+      "fanout": {
+        "label": "fanout",
+        "converged": true,
+        "rounds": 2,
+        "invocations": 6,
+        "wall_clock_seconds": 1.72849977388978e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": true,
+        "rounds": 4,
+        "invocations": 4,
+        "wall_clock_seconds": 1.4516001101583242e-05
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": true,
+        "rounds": 4,
+        "invocations": 4,
+        "wall_clock_seconds": 1.3006996596232057e-05
+      }
+    },
+    {
+      "name": "duplicated_roster_5_agents",
+      "description": "5 agents (2x Exploration/Risk ids, 1x Synthesis), convergence_target=3.",
+      "goal": "Coordinate multi-region failover",
+      "threshold": 0.8,
+      "convergence_target": 3,
+      "max_rounds": 4,
+      "roster_size": 5,
+      "expect_convergence": true,
+      "fanout": {
+        "label": "fanout",
+        "converged": true,
+        "rounds": 1,
+        "invocations": 5,
+        "wall_clock_seconds": 1.3248994946479797e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": true,
+        "rounds": 3,
+        "invocations": 3,
+        "wall_clock_seconds": 1.207699824590236e-05
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": true,
+        "rounds": 3,
+        "invocations": 3,
+        "wall_clock_seconds": 1.1429998266976327e-05
+      }
+    },
+    {
+      "name": "duplicated_roster_6_higher_target",
+      "description": "6 agents (2x each type with distinct ids), convergence_target raised to 5.",
+      "goal": "Design a zero-downtime migration",
+      "threshold": 0.8,
+      "convergence_target": 5,
+      "max_rounds": 4,
+      "roster_size": 6,
+      "expect_convergence": true,
+      "fanout": {
+        "label": "fanout",
+        "converged": true,
+        "rounds": 1,
+        "invocations": 6,
+        "wall_clock_seconds": 1.6204998246394098e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": false,
+        "rounds": 4,
+        "invocations": 4,
+        "wall_clock_seconds": 1.2764998245984316e-05
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": true,
+        "rounds": 6,
+        "invocations": 6,
+        "wall_clock_seconds": 1.4747995010111481e-05
+      }
+    },
+    {
+      "name": "tight_round_budget",
+      "description": "Default 3-agent roster but max_rounds=1 -- tests whether fan-out's single-round breadth matters.",
+      "goal": "Contain a security incident",
+      "threshold": 0.8,
+      "convergence_target": 3,
+      "max_rounds": 1,
+      "roster_size": 3,
+      "expect_convergence": true,
+      "fanout": {
+        "label": "fanout",
+        "converged": true,
+        "rounds": 1,
+        "invocations": 3,
+        "wall_clock_seconds": 1.0488998668733984e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": false,
+        "rounds": 1,
+        "invocations": 1,
+        "wall_clock_seconds": 9.077994036488235e-06
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": true,
+        "rounds": 3,
+        "invocations": 3,
+        "wall_clock_seconds": 1.0509997082408518e-05
+      }
+    },
+    {
+      "name": "roster_too_small_for_target",
+      "description": "Only 2 distinct agent_ids ever available; convergence_target=3 is structurally unreachable.",
+      "goal": "Simulate an under-staffed roster",
+      "threshold": 0.8,
+      "convergence_target": 3,
+      "max_rounds": 4,
+      "roster_size": 2,
+      "expect_convergence": false,
+      "fanout": {
+        "label": "fanout",
+        "converged": false,
+        "rounds": 4,
+        "invocations": 8,
+        "wall_clock_seconds": 1.5775003703311086e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": false,
+        "rounds": 4,
+        "invocations": 4,
+        "wall_clock_seconds": 1.1609001376200467e-05
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": false,
+        "rounds": 8,
+        "invocations": 8,
+        "wall_clock_seconds": 1.5268000424839556e-05
+      }
+    },
+    {
+      "name": "acceptance_threshold_unreachable",
+      "description": "threshold=0.99 exceeds every agent's max possible score (0.88/0.91/0.95) -- nothing is ever accepted.",
+      "goal": "Push the acceptance bar out of reach",
+      "threshold": 0.99,
+      "convergence_target": 3,
+      "max_rounds": 4,
+      "roster_size": 3,
+      "expect_convergence": false,
+      "fanout": {
+        "label": "fanout",
+        "converged": false,
+        "rounds": 4,
+        "invocations": 12,
+        "wall_clock_seconds": 1.8713995814323425e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": false,
+        "rounds": 4,
+        "invocations": 4,
+        "wall_clock_seconds": 1.176499790744856e-05
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": false,
+        "rounds": 12,
+        "invocations": 12,
+        "wall_clock_seconds": 1.787499786587432e-05
+      }
+    },
+    {
+      "name": "large_roster_diverse",
+      "description": "8 agents, higher convergence_target=6, larger max_rounds budget.",
+      "goal": "Orchestrate a multi-team launch",
+      "threshold": 0.8,
+      "convergence_target": 6,
+      "max_rounds": 5,
+      "roster_size": 8,
+      "expect_convergence": true,
+      "fanout": {
+        "label": "fanout",
+        "converged": true,
+        "rounds": 1,
+        "invocations": 8,
+        "wall_clock_seconds": 1.4794997696299106e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": false,
+        "rounds": 5,
+        "invocations": 5,
+        "wall_clock_seconds": 1.3074997696094215e-05
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": true,
+        "rounds": 7,
+        "invocations": 7,
+        "wall_clock_seconds": 1.5126999642234296e-05
+      }
+    },
+    {
+      "name": "low_convergence_target",
+      "description": "Default 3-agent roster, convergence_target lowered to 2 -- easy case, both conditions should converge fast.",
+      "goal": "Draft a rollback plan",
+      "threshold": 0.8,
+      "convergence_target": 2,
+      "max_rounds": 4,
+      "roster_size": 3,
+      "expect_convergence": true,
+      "fanout": {
+        "label": "fanout",
+        "converged": true,
+        "rounds": 1,
+        "invocations": 3,
+        "wall_clock_seconds": 1.0686999303288758e-05
+      },
+      "serial_matched": {
+        "label": "serial_matched",
+        "converged": true,
+        "rounds": 2,
+        "invocations": 2,
+        "wall_clock_seconds": 9.711002348922193e-06
+      },
+      "serial_extended": {
+        "label": "serial_extended",
+        "converged": true,
+        "rounds": 2,
+        "invocations": 2,
+        "wall_clock_seconds": 9.6160001703538e-06
+      }
+    }
+  ],
+  "summary": {
+    "fanout": {
+      "convergence_rate": 0.7777777777777778,
+      "mean_rounds_to_converge": 1.1428571428571428,
+      "mean_invocations_to_converge": 4.857142857142857,
+      "mean_wall_clock_seconds_all_runs": 1.7190331871259128e-05,
+      "total_wall_clock_seconds_all_runs": 0.00015471298684133217,
+      "n_scenarios": 9,
+      "n_converged": 7
+    },
+    "serial_matched": {
+      "convergence_rate": 0.4444444444444444,
+      "mean_rounds_to_converge": 3.0,
+      "mean_invocations_to_converge": 3.0,
+      "mean_wall_clock_seconds_all_runs": 1.30259989722011e-05,
+      "total_wall_clock_seconds_all_runs": 0.00011723399074980989,
+      "n_scenarios": 9,
+      "n_converged": 4
+    },
+    "serial_extended": {
+      "convergence_rate": 0.7777777777777778,
+      "mean_rounds_to_converge": 4.0,
+      "mean_invocations_to_converge": 4.0,
+      "mean_wall_clock_seconds_all_runs": 1.3688442575383104e-05,
+      "total_wall_clock_seconds_all_runs": 0.00012319598317844793,
+      "n_scenarios": 9,
+      "n_converged": 7
+    }
+  }
+}

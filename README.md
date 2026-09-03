@@ -44,6 +44,7 @@ git clone https://github.com/vpeetla-ai/vpeetla-ai-skills.git
 | MCP tool bridge | ❌ | See LoopForge / VAP MCP docs |
 | AegisAI gateway | ❌ | No side effects in pattern demo |
 | Pytest regression | ✅ | `pytest -q` in repo |
+| Fan-out vs. serial benchmark | ✅ | Real, executed — 9 goal/roster scenarios. Fan-out converges 7/9 under a matched round budget vs. serial's 4/9 (mean 1.14 vs. 3.00 rounds-to-converge); serial catches up to the same 7/9 once given an equal total-invocation budget. Wall-clock delta is real but marginal at this in-process stub scale (sub-millisecond) — invocation/round counts are the honest primary signal, not wall-clock. See [docs/receipts/benchmark.md](docs/receipts/benchmark.md). Gated in CI via the `swarm_agent_pattern.fanout_v1` suite in [golden-eval-registry](https://github.com/vpeetla-ai/golden-eval-registry). |
 
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://swarm-agent-pattern.vercel.app)
