@@ -2,9 +2,9 @@
 
 ## Context
 
-Swarm architectures are useful when a system needs adaptive coordination rather than a fixed central plan. This appears in real-time operations, simulations, open-ended optimization, autonomous monitoring, and environments where useful work can emerge from many agents proposing, scoring, and reacting to shared state.
+Swarm architectures are useful when a system needs adaptive coordination, not a fixed central plan. Think real-time ops, simulations, open-ended optimization, autonomous monitoring — anywhere useful work can emerge from agents proposing, scoring, and reacting to shared state.
 
-Swarm systems are powerful but risky. They should not be the default enterprise pattern. They require stronger observability, budgets, convergence rules, and safety boundaries than centralized orchestration.
+Swarm systems are powerful but risky. They should not be the default enterprise pattern. They need stronger observability, budgets, convergence rules, and safety boundaries than centralized orchestration.
 
 ## Decision
 
@@ -78,9 +78,9 @@ where the prose could gloss over them:
 ## Fan-out vs. Serial Baseline (Benchmark)
 
 `scripts/benchmark_fanout_vs_serial.py` runs 9 real scenarios against the
-actual `SwarmRuntime` above, plus a new `SerialSwarmRuntime` baseline (same
-script) that proposes with **one** agent per round, cycling through the
-roster, instead of the full fan-out every round. Full receipt:
+actual `SwarmRuntime` above. It adds one new baseline — `SerialSwarmRuntime`
+(same script) — that proposes with **one** agent per round, cycling through
+the roster, instead of the full fan-out every round. Full receipt:
 [`docs/receipts/benchmark.md`](receipts/benchmark.md).
 
 ```mermaid
@@ -104,29 +104,31 @@ flowchart TD
 ```
 
 **Real headline numbers, 9 scenarios, matched round budget (`max_rounds`
-equal for both conditions):** fan-out converges on **7/9 (78%)** of
-scenarios at a mean **1.14 rounds**; serial under the same round budget
-converges on **4/9 (44%)** at a mean **3.00 rounds** — the 2 scenarios
-neither condition can converge on are deliberately unreachable by design
-(too small a roster, or an acceptance threshold no stub agent's score can
-clear) and are reported as real non-convergence for both, not hidden.
+equal for both conditions):**
+
+- Fan-out converges on **7/9 (78%)** of scenarios, mean **1.14 rounds**.
+- Serial, same round budget, converges on **4/9 (44%)**, mean **3.00 rounds**.
+- The 2 scenarios neither condition converges on are unreachable by
+  design — too small a roster, or an acceptance threshold no stub agent's
+  score can clear. Reported as real non-convergence for both, not hidden.
 
 **Read this honestly, per the repo's own receipt: fan-out's advantage here
 is coverage-per-round, not invocation-efficiency.** Fan-out used **more**
 total agent invocations to converge on average — **4.86** — than serial's
-**3.00–4.00** (matched vs. extended budget). Fan-out wins because every
-round gives it up to N chances to hit `convergence_target`, so it typically
-converges in fewer *rounds*; serial only gets one proposal per round, so it
-needs proportionally more rounds even though each round costs less. Given an
-**extended** round budget (the same total invocation count fan-out's worst
-case would spend), serial eventually reaches the same convergence_target on
-every scenario fan-out does (also 7/9) — confirming serial agents are not
-structurally incapable of the same answer, only slower to reach it
-round-for-round under a tight round cap.
+**3.00–4.00** (matched vs. extended budget).
+
+Why: every round gives fan-out up to N chances to hit `convergence_target`,
+so it usually converges in fewer *rounds*. Serial gets one proposal per
+round, so it needs more rounds — even though each round costs less.
+
+Give serial an **extended** round budget (matching fan-out's worst-case
+total invocation count) and it reaches the same `convergence_target` on
+every scenario fan-out does — also 7/9. Serial isn't structurally incapable
+of the same answer. It's just slower, round-for-round, under a tight cap.
 
 This benchmark measures the pattern's real mechanical behavior — invocation
 counts and round counts from `SwarmRuntime` and `SerialSwarmRuntime`'s
-actual `.run()` calls — not LLM output quality; `ExplorationAgent`,
+actual `.run()` calls — not LLM output quality. `ExplorationAgent`,
 `RiskAgent`, and `SynthesisAgent` remain deterministic stubs with no
 external API calls, same as the rest of this repo.
 
